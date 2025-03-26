@@ -251,7 +251,7 @@ document.getElementById("contact-form").addEventListener("submit", async (event)
     const message = document.getElementById("message").value;
 
     try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwI-Tvq1fFY8ZKRHV8ur70MOM2B5CbaSn9YUaQ_lHdzmSq5p8PWNwUMS4qrQD19_rxmbA/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyJJq22SEKYUW2KwFmKAgkbdF0-kAVQ5i9NW0x0eS8LhT_Y5CRMjT1Ra4P-Q3GhlOVHIw/exec", {
             method: "POST",
             mode: "cors",
             headers: {
