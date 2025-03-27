@@ -242,43 +242,80 @@ function handleSCroll() {
 }
 
 //contact_section --> submitting the form
-document.getElementById("contact-form").addEventListener("submit", async (event) => {
+document.getElementById("contact-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("came in");
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
 
-    try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyJJq22SEKYUW2KwFmKAgkbdF0-kAVQ5i9NW0x0eS8LhT_Y5CRMjT1Ra4P-Q3GhlOVHIw/exec", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ name, email, message })
+    fetch("https://script.google.com/macros/s/AKfycbyJJq22SEKYUW2KwFmKAgkbdF0-kAVQ5i9NW0x0eS8LhT_Y5CRMjT1Ra4P-Q3GhlOVHIw/exec", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert('Failed to submit the form');
         });
+    // .then(response => response.json())
+    // .then(result => {
+    //     console.log(result);
+    //     if (result.status === "success") {
+    //         alert(result.message);
+    //         document.getElementById("contact-form").reset();
+    //     } else {
+    //         alert("Error: " + result.message);
+    //     }
+    // })
+    // .catch(error => {
+    //     alert("There was an error submitting the message.\nIt might be your Internet connection or the server is down. Please try again later.");
+    //     console.error("Error:", error);
+    // });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json(); // Parse JSON response
-        console.log("Server response:", result);
-
-        if (result.status === "success") {
-            alert(result.message);
-            document.getElementById("contact-form").reset();
-        } else {
-            alert("Error: " + result.message);
-        }
-
-    } catch (error) {
-        alert("There was an error submitting the message.\nIt might be your Internet connection or the server is down. Please try again later.");
-        console.error("Error:", error);
-    }
 });
+
+// document.getElementById("contact-form").addEventListener("submit", async (event) => {
+//     event.preventDefault();
+//     console.log("came in");
+
+//     const name = document.getElementById("name").value;
+//     const email = document.getElementById("email").value;
+//     const message = document.getElementById("message").value;
+
+//     try {
+//         const response = await fetch("https://script.google.com/macros/s/AKfycbyJJq22SEKYUW2KwFmKAgkbdF0-kAVQ5i9NW0x0eS8LhT_Y5CRMjT1Ra4P-Q3GhlOVHIw/exec", {
+//             method: "POST",
+//             mode: "cors",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({ name, email, message })
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+
+//         const result = await response.json(); // Parse JSON response
+//         console.log("Server response:", result);
+
+//         if (result.status === "success") {
+//             alert(result.message);
+//             document.getElementById("contact-form").reset();
+//         } else {
+//             alert("Error: " + result.message);
+//         }
+
+//     } catch (error) {
+//         alert("There was an error submitting the message.\nIt might be your Internet connection or the server is down. Please try again later.");
+//         console.error("Error:", error);
+//     }
+// });
 
 //Redirects
 function redirect(destination) {
