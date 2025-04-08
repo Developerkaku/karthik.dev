@@ -797,19 +797,19 @@ body {
     /* project-cards */
     #item-1 {
         top: 2rem;
-        background-image: url("/assets/images/project-imgs/kaakuChat/index.png");
+        /* background-image: url("/assets/images/project-imgs/kaakuChat/index.png"); */
         background-size: contain;
     }
 
     #item-2 {
-        background-image: url("/assets/images/project-imgs/spotify/index.png");
+        /* background-image: url("/assets/images/project-imgs/spotify/index.png"); */
         background-size: contain;
         background-repeat: no-repeat;
     }
 
     #item-3 {
         right: 20%;
-        background-image: url("/assets/images/project-imgs/sympto/index.png");
+        /* background-image: url("/assets/images/project-imgs/sympto/index.png"); */
         background-size: contain;
         background-position: center;
     }
