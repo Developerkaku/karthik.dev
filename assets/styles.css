@@ -797,7 +797,8 @@ body {
     /* project-cards */
     #item-1 {
         top: 2rem;
-        background-image: url("/assets/images/project-imgs/kaakuChat/index.png");
+        background-image: url("assets/images/project-imgs/kaakuChat/index.png");
+/*         background-image: url("/assets/images/project-imgs/kaakuChat/index.png"); */
         background-size: contain;
     }
 
