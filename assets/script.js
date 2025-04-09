@@ -4,50 +4,35 @@ function toggleMenu() {
 }
 
 //navigation using nav elems
-async function zoomScroll(scrollTop) {
-    const cards = document.querySelectorAll(".cards-low-quality");
-    cards.forEach((card) => {
-        card.classList.remove("cards-low-quality")
-    });
-    try {
-        await new Promise(resolve => {
-            main.scrollTo({ top: Number(scrollTop), behavior: 'smooth' });
-            // setTimeout(resolve, 1000);
-            setTimeout(() => {
-                resolve();
-            }, 1000);
-        });
-        cards.forEach((card) => {
-            card.classList.add("cards-low-quality")
-        });
-
-    } catch (error) {
-        console.error("scroll failed:", error);
-    }
+function zoomScroll(scrollTop) {
+    main.scrollTo({ top: Number(scrollTop), behavior: 'smooth' });
 }
 
 //settings
 
-function toggleSettings() {
+function toggleSettings(elem) {
     const settingsBg = document.querySelector("#settings-bg");
     const settings = document.querySelector("#settings");
     settingsBg.style.display = (settingsBg.style.display == "none") ? "block" : "none";
     settings.style.display = (settingsBg.style.display == "none") ? "none" : "flex";
+
+    document.getElementsByClassName("settings")[0].classList.toggle("active");
 }
+document.getElementsByClassName("settings")[0].classList.toggle("active");
 toggleSettings() //ensuring that everything is set to none at the start (else it requires calling the function 2 times in order to activate the settings once)
 
 let graphics = document.querySelectorAll(".graphics");
 document.querySelectorAll(".graphics").forEach(elem => {
-    elem.addEventListener("click", (e) => {        
+    elem.addEventListener("click", (e) => {
 
-        if(e.target.classList.contains("active")) return
+        if (e.target.classList.contains("active")) return
         else {
             document.querySelectorAll(".graphics").forEach(g => g.classList.remove("active"));
             e.target.classList.add("active");
 
             let res = e.target.getAttribute("for");
             let cards = document.querySelectorAll(".cards");
-            
+
             cards.forEach(card => {
                 if (res === "low") card.classList.add("cards-low-quality");
                 else if (res === 'high') card.classList.remove("cards-low-quality");
@@ -135,11 +120,11 @@ const projectCards = document.querySelectorAll(".project-cards");
 const projectDetails = document.querySelectorAll(".project-details");
 const projectDetailsBg = document.querySelector("#project-details-bg");
 
-projectCards.forEach( (card) => {
+projectCards.forEach((card) => {
     card.addEventListener("click", () => {
         projectDetailsBg.style.display = "block";
-        projectDetails.forEach( elem => {
-            if(elem.getAttribute("for") == card.id) elem.style.display = "flex";
+        projectDetails.forEach(elem => {
+            if (elem.getAttribute("for") == card.id) elem.style.display = "flex";
             else elem.style.display = "none";
         });
     });
@@ -147,7 +132,7 @@ projectCards.forEach( (card) => {
 
 //close using the x-mark
 document.querySelectorAll(".x-mark").forEach(elem => {
-    elem.addEventListener("click", ()=>{
+    elem.addEventListener("click", () => {
         elem.parentElement.parentElement.style.display = "none";
     });
 })
@@ -174,7 +159,7 @@ document.getElementById("contact-form").addEventListener("submit", (event) => {
             console.error("Error:", error);
             alert('Failed to submit the form');
         })
-        .finally(()=>{
+        .finally(() => {
             event.target.reset()
         })
     // .then(response => response.json())
@@ -299,9 +284,9 @@ main.addEventListener("scroll", () => {
 let previousST = 0;
 function handleSCroll() {
     let scrollTop = Math.round(main.scrollTop);
-    let scrollLimit = (cardCount-1) * elemsOutOfViewUnit;
+    let scrollLimit = (cardCount - 1) * elemsOutOfViewUnit;
 
-    if(scrollTop >= scrollLimit) {
+    if (scrollTop >= scrollLimit) {
         main.scrollTop = scrollLimit;
     }
 
@@ -314,7 +299,7 @@ function handleSCroll() {
         //     k = 2;
         //     return;
         // }
-        if(scrollTop >= i * elemsOutOfViewUnit && scrollTop <= (i + 1) * (elemsOutOfViewUnit - cardOffset)) {
+        if (scrollTop >= i * elemsOutOfViewUnit && scrollTop <= (i + 1) * (elemsOutOfViewUnit - cardOffset)) {
             navElems[i].classList.add("active");
         } else navElems[i].classList.remove("active");
 

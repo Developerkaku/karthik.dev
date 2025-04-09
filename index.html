@@ -17,20 +17,20 @@
         <div id="logo" onclick="changeResolution()">K</div>
         <ul class="nav-links" id="navLinks">
             <li><button class="active" onclick="zoomScroll(0)">Start</button></li>
-            <li><button class="" onclick="zoomScroll(1500);">Projects</button></li>
-            <li><button class="" onclick="zoomScroll(3010)">Contact</button></li>
-            <li><button class="" onclick="toggleSettings()">Settings</button></li>
+            <li><button class="" onclick="zoomScroll(1410);">Projects</button></li>
+            <li><button class="" onclick="zoomScroll(2920)">Contact</button></li>
+            <li><button class="settings" onclick="toggleSettings();">Settings</button></li>
         </ul>
         <div class="menu-toggle" onclick="toggleMenu()">#</div>
     </nav>
 
     <div id="settings-bg">
         <div id="settings">
-            <div class="x-mark">&times;</div>
+            <div class="x-mark" onclick="toggleSettings()">&times;</div>
             <div class="bars">
                 <div class="mask">Graphics</div>
-                <div class="selectables graphics active" for="low">Low</div>
-                <div class="selectables graphics" for="high">High</div>
+                <div class="selectables graphics" for="low">Low</div>
+                <div class="selectables graphics active" for="high">High</div>
             </div>
             <div class="bars btn" onclick="redirect('mail')"> Report </div>
         </div>
@@ -61,7 +61,7 @@
                 <p class="info">
                     <span>Role: </span>Front-end, Back-end
                 </p>
-                <div class="gradient-background">Visit</div>
+                <div class="gradient-background" onclick="window.open('https:/\/developerkaku.github.io/KaakuChat')">Visit</div>
             </div>
         </section>
         <section for="item-2" class="project-details" data-tilt-angle="1">
@@ -85,7 +85,7 @@
                 <p class="info">
                     <span>Role: </span>Front-end, Back-end
                 </p>
-                <div class="gradient-background">Visit</div>
+                <div class="gradient-background" onclick="window.open('https:/\/developerkaku.github.io/spotify-look-alike')">Visit</div>
             </div>
         </section>
         <section for="item-3" class="project-details" data-tilt-angle="1">
@@ -110,7 +110,7 @@
                 <p class="info">
                     <span>Role: </span>Front-end, Back-end
                 </p>
-                <div class="gradient-background">Visit</div>
+                <div class="gradient-background" onclick="window.open('https:/\/developerkaku.github.io/Sympto')">Visit</div>
             </div>
         </section>
     </div>
@@ -118,7 +118,7 @@
     <!-- The main elems -->
     <div id="main">
         <div class="cards-container">
-            <div class="cards cards-low-quality" style="z-index: 4;">
+            <div class="cards" style="z-index: 4;">
                 <div id="about">
                     <div id="a">
                         <div id="profile-pic">
@@ -207,10 +207,10 @@
                     </div>
                 </div>
             </div>
-            <div class="cards cards-low-quality" style="z-index: 3; transform: translateZ(-1410vw);">
+            <div class="cards" style="z-index: 3; transform: translateZ(-1410vw);">
                 <div id="projects">
                     
-                    <h1>PROJECTS</h1>
+                    <h1>Featured Projects</h1>
                     <div class="project-cards-container">
                         <div id="item-1" class="project-cards tilt-card" style="background-image: url('assets/images/project-imgs/kaakuChat/index.png');">
                             <div class="card-details">
@@ -234,7 +234,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cards cards-low-quality" style="z-index: 2; transform: translateZ(-2820vw);">
+            <div class="cards" style="z-index: 2; transform: translateZ(-2820vw);">
                 <div id="contact">
                     <h1>Contact me</h1>
                     <form id="contact-form" class="tilt-card" data-tilt-angle="5">
