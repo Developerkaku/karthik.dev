@@ -809,6 +809,7 @@ body {
 
     #item-3 {
         right: 20%;
+background-image: url("./assets/images/project-imgs/sympto/index.png");
         /* background-image: url("/assets/images/project-imgs/sympto/index.png"); */
         background-size: contain;
         background-position: center;
