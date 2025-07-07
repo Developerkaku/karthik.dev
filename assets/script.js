@@ -224,7 +224,7 @@ function redirect(destination) {
             window.open("mailto:karthikprofessional204@gmail.com", "_blank");
             break;
         case "linkedin":
-            window.open("https:www.linkedin.com/in/karthik-s-4b6987297", "_blank");
+            window.open("https://www.linkedin.com/in/karthik-shatagopam", "_blank");
             break;
         case "github":
             window.open("https://github.com/Developerkaku", "_blank");
