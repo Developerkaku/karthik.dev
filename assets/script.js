@@ -4,9 +4,17 @@ function toggleMenu() {
 }
 
 //navigation using nav elems
+let scrollingAlertCount = 0;
+
 function zoomScroll(scrollTop) {
+    // Check if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && scrollingAlertCount == 0) {
+        alert('User has enabled Reduced Motion. Animations and smooth scrolling may be disabled for better accessibility.');
+        scrollingAlertCount = 1;
+    }
     main.scrollTo({ top: Number(scrollTop), behavior: 'smooth' });
 }
+
 
 //settings
 
@@ -118,14 +126,26 @@ let glitchInterval = setInterval(glitchStart, 5000);
 //project section
 const projectCards = document.querySelectorAll(".project-cards");
 const projectDetails = document.querySelectorAll(".project-details");
+// const a = document.querySelectorAll("#about");
+// alert(a);
+// a.forEach(elem => {
+//     elem.addEventListener("click", () => {
 const projectDetailsBg = document.querySelector("#project-details-bg");
 
 projectCards.forEach((card) => {
     card.addEventListener("click", () => {
         projectDetailsBg.style.display = "block";
         projectDetails.forEach(elem => {
-            if (elem.getAttribute("for") == card.id) elem.style.display = "flex";
-            else elem.style.display = "none";
+            // if (elem.getAttribute("for") == card.id) elem.style.display = "flex";
+            if (elem.getAttribute("for") == card.id) {
+                elem.classList.remove("display-none");
+                elem.classList.add("display-flex_block");
+            } else {
+                elem.classList.remove("display-flex_block");
+                elem.classList.add("display-none");
+            }
+            // else elem.style.display = "none";
+            // else elem.classList.remove("display-flex_block");
         });
     });
 });
@@ -162,60 +182,8 @@ document.getElementById("contact-form").addEventListener("submit", (event) => {
         .finally(() => {
             event.target.reset()
         })
-    // .then(response => response.json())
-    // .then(result => {
-    //     console.log(result);
-    //     if (result.status === "success") {
-    //         alert(result.message);
-    //         document.getElementById("contact-form").reset();
-    //     } else {
-    //         alert("Error: " + result.message);
-    //     }
-    // })
-    // .catch(error => {
-    //     alert("There was an error submitting the message.\nIt might be your Internet connection or the server is down. Please try again later.");
-    //     console.error("Error:", error);
-    // });
 
 });
-
-// document.getElementById("contact-form").addEventListener("submit", async (event) => {
-//     event.preventDefault();
-//     console.log("came in");
-
-//     const name = document.getElementById("name").value;
-//     const email = document.getElementById("email").value;
-//     const message = document.getElementById("message").value;
-
-//     try {
-//         const response = await fetch("https://script.google.com/macros/s/AKfycbyJJq22SEKYUW2KwFmKAgkbdF0-kAVQ5i9NW0x0eS8LhT_Y5CRMjT1Ra4P-Q3GhlOVHIw/exec", {
-//             method: "POST",
-//             mode: "cors",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify({ name, email, message })
-//         });
-
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const result = await response.json(); // Parse JSON response
-//         console.log("Server response:", result);
-
-//         if (result.status === "success") {
-//             alert(result.message);
-//             document.getElementById("contact-form").reset();
-//         } else {
-//             alert("Error: " + result.message);
-//         }
-
-//     } catch (error) {
-//         alert("There was an error submitting the message.\nIt might be your Internet connection or the server is down. Please try again later.");
-//         console.error("Error:", error);
-//     }
-// });
 
 //Redirects
 function redirect(destination) {
@@ -291,18 +259,10 @@ function handleSCroll() {
     }
 
     for (let i = 0; i < cardCount; i++) {
-        // if(scrollTop <= 500) {
-        //     k = 1;
-        //     return;
-        // }
-        // else if(1910 <= scrollTop && scrollTop <= 2410) {
-        //     k = 2;
-        //     return;
-        // }
+
         if (scrollTop >= i * elemsOutOfViewUnit && scrollTop <= (i + 1) * (elemsOutOfViewUnit - cardOffset)) {
             navElems[i].classList.add("active");
         } else navElems[i].classList.remove("active");
-
 
         cardsList[i].style.transform = `translateZ(${scrollTop - (i * elemsOutOfViewUnit)}vw)`;
     }
