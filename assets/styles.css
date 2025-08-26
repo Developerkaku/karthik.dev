@@ -359,7 +359,7 @@ body {
                 justify-content: center;
                 align-items: center;
 
-                animation: fadeInUp 1s ease-in;
+                /* animation: fadeInUp 1s ease-in; */
 
                 span {
                     user-select: none;
