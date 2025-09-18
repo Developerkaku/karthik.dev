@@ -222,7 +222,9 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    background-color: black;
+    background: url(../assets/images/bg.jpg);
+    background-size: cover;
+    /* background-color: black; */
 }
 
 .scrollable-divs>div {
